@@ -1,0 +1,81 @@
+{
+    "organization": "Misión Huascarán",
+    "mission": "Empower rural communities to improve their quality of life and foster development",
+    "history": {
+      "origin": {
+        "year": 2005,
+        "location": "Callejón de Huaylas, Ancash",
+        "background": "Volunteers observed extreme poverty and a desire for self-improvement, leading to the founding of the organization"
+      },
+      "milestones": [
+        { "year": 2005, "event": "First volunteer visit in Ancash" },
+        { "year": 2017, "event": "Launch of Education, Housing, and Economic Development Programs" },
+        { "year": 2018, "event": "Introduction of Nutrition and Healthcare Programs" },
+        { "year": 2020, "event": "Launch of Bakery Against Anemia" }
+      ]
+    },
+    "programs": {
+      "education": {
+        "launch_year": 2017,
+        "initiatives": [
+          "Centro de Misiones",
+          "Ludic libraries with internet access",
+          "Complementary education to boost communication, reading, and critical thinking"
+        ]
+      },
+      "economic_development": {
+        "launch_year": 2017,
+        "projects": [
+          "Knitting Hope",
+          "Solidarity Strawberries"
+        ],
+        "notes": "Managed by local leaders independently"
+      },
+      "housing": {
+        "launch_year": 2017,
+        "features": [
+          "Improved kitchens",
+          "Solar panel installations"
+        ]
+      },
+      "healthcare": {
+        "launch_year": 2018,
+        "mobile_posts": {
+          "start_coverage": 13,
+          "current_coverage": 180
+        }
+      },
+      "nutrition": {
+        "launch_year": 2018,
+        "initiatives": [
+          "Bakery Against Anemia (2020)",
+          "Malnutrition reduction activities"
+        ],
+        "impact": {
+          "child_malnutrition_reduction": {
+            "before": "44%",
+            "after": "9%"
+          }
+        }
+      }
+    },
+    "community_engagement": {
+      "volunteering": {
+        "contact": "info@misionhuascaran.org.pe"
+      },
+      "corporate_support": {
+        "options": [
+          "Monthly/recurring donations",
+          "Organizing corporate volunteering"
+        ]
+      },
+      "campaigns": "Solidarity campaigns for community support"
+    },
+    "contact_info": {
+      "address": "Calle San Martín, 845. 4th Floor, Miraflores, Lima",
+      "phone": "01 396 6712",
+      "mobile": "928 397 947",
+      "website": "www.misionhuascaran.org.pe",
+      "email": "info@misionhuascaran.org.pe"
+    }
+  }

@@ -1,0 +1,414 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Misión Huascarán - Vibrant Peruvian-Inspired Design System */
+
+@layer base {
+  :root {
+    /* Vibrant Peruvian Palette - Inspired by traditional textiles and Andean landscapes */
+    --background: 220 20% 97%; /* Clean, bright white with subtle blue undertone */
+    --foreground: 220 25% 15%; /* Deep charcoal for excellent readability */
+
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 220 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+
+    /* Primary - Vibrant Turquoise (from Magdalena's sweater) */
+    --primary: 183 65% 45%; /* Rich turquoise */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 183 65% 40%;
+    --primary-light: 183 65% 95%;
+
+    /* Secondary - Warm Coral/Pink (from traditional textiles) */
+    --secondary: 345 75% 60%; /* Vibrant coral-pink */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 345 75% 55%;
+    --secondary-light: 345 75% 95%;
+
+    /* Accent - Golden Sun (from Andean landscapes) */
+    --accent: 45 95% 60%; /* Bright golden yellow */
+    --accent-foreground: 220 25% 15%;
+    --accent-hover: 45 95% 55%;
+    --accent-light: 45 95% 95%;
+
+    /* Additional Peruvian Colors */
+    --emerald: 158 70% 40%; /* Deep forest green from landscapes */
+    --emerald-foreground: 0 0% 100%;
+    --purple: 270 60% 55%; /* Rich purple from traditional clothing */
+    --purple-foreground: 0 0% 100%;
+    --orange: 25 85% 55%; /* Warm orange from sunsets */
+    --orange-foreground: 0 0% 100%;
+
+    /* Neutral Colors - Sophisticated */
+    --muted: 220 15% 95%; /* Clean light gray */
+    --muted-foreground: 220 10% 45%; /* Medium gray */
+    --border: 220 15% 85%; /* Subtle borders */
+    --input: 220 15% 97%; /* Input backgrounds */
+    --ring: 183 65% 45%; /* Focus rings use primary color */
+
+    /* Status Colors - Vibrant */
+    --success: 158 70% 45%; /* Vibrant emerald */
+    --success-foreground: 0 0% 100%;
+    --warning: 45 95% 60%; /* Bright golden yellow */
+    --warning-foreground: 220 25% 15%;
+    --destructive: 345 75% 60%; /* Vibrant coral for alerts */
+    --destructive-foreground: 0 0% 100%;
+    --urgent: 345 75% 60%;
+    --urgent-light: 345 75% 97%;
+
+    /* Vibrant Gradients - Inspired by Peruvian textiles */
+    --gradient-primary: linear-gradient(135deg, hsl(183 65% 45%), hsl(183 65% 35%));
+    --gradient-secondary: linear-gradient(135deg, hsl(345 75% 60%), hsl(345 75% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 95% 60%), hsl(45 95% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(183 65% 45%) 0%, hsl(270 60% 55%) 50%, hsl(345 75% 60%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 15% 98%));
+    --gradient-textile: linear-gradient(45deg, hsl(345 75% 60%), hsl(270 60% 55%), hsl(183 65% 45%), hsl(45 95% 60%));
+
+    /* Elegant Shadows */
+    --shadow-sm: 0 1px 3px 0 hsl(220 25% 15% / 0.08);
+    --shadow-md: 0 4px 20px -4px hsl(220 25% 15% / 0.12);
+    --shadow-lg: 0 10px 40px -8px hsl(220 25% 15% / 0.15);
+    --shadow-xl: 0 20px 60px -12px hsl(220 25% 15% / 0.18);
+    --shadow-card: 0 4px 20px -4px hsl(183 65% 45% / 0.08);
+    --shadow-button: 0 8px 25px -8px hsl(183 65% 45% / 0.3);
+    --shadow-vibrant: 0 8px 32px -8px hsl(345 75% 60% / 0.25);
+
+    /* Organic Shapes */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 35 30% 97%;
+    --sidebar-foreground: 25 15% 25%;
+    --sidebar-primary: 142 40% 35%;
+    --sidebar-primary-foreground: 35 33% 98%;
+    --sidebar-accent: 30 20% 94%;
+    --sidebar-accent-foreground: 25 15% 25%;
+    --sidebar-border: 30 15% 90%;
+    --sidebar-ring: 142 40% 35%;
+  }
+
+  .dark {
+    --background: 25 15% 12%; /* Dark earth */
+    --foreground: 35 33% 98%;
+
+    --card: 25 15% 15%;
+    --card-foreground: 35 33% 98%;
+
+    --popover: 25 15% 15%;
+    --popover-foreground: 35 33% 98%;
+
+    --primary: 142 40% 45%; /* Lighter forest */
+    --primary-foreground: 35 33% 98%;
+
+    --secondary: 22 65% 65%; /* Lighter terracotta */
+    --secondary-foreground: 25 15% 25%;
+
+    --muted: 25 15% 20%;
+    --muted-foreground: 35 20% 80%;
+    --border: 25 15% 25%;
+    --input: 25 15% 20%;
+    --ring: 142 40% 45%;
+
+    --sidebar-background: 25 15% 15%;
+    --sidebar-foreground: 35 33% 98%;
+    --sidebar-primary: 142 40% 45%;
+    --sidebar-primary-foreground: 35 33% 98%;
+    --sidebar-accent: 25 15% 20%;
+    --sidebar-accent-foreground: 35 33% 98%;
+    --sidebar-border: 25 15% 25%;
+    --sidebar-ring: 142 40% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer components {
+  /* Vibrant Button Variants */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-hover text-primary-foreground shadow-button 
+           transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-1
+           hover:from-primary-hover hover:to-primary rounded-xl font-semibold px-8 py-3;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary to-secondary-hover text-secondary-foreground shadow-button 
+           transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-1
+           rounded-xl font-semibold px-8 py-3;
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent to-accent-hover text-accent-foreground shadow-button 
+           transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1
+           rounded-xl font-semibold px-8 py-3;
+  }
+
+  .btn-emerald {
+    @apply bg-gradient-to-r from-emerald to-emerald text-emerald-foreground shadow-button 
+           transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-1
+           rounded-xl font-semibold px-8 py-3;
+  }
+
+  /* Modern Card Variants */
+  .card-organic {
+    @apply bg-card border-0 rounded-2xl shadow-card 
+           hover:shadow-lg transition-all duration-500 
+           hover:scale-[1.02] relative overflow-hidden backdrop-blur-sm;
+  }
+  
+  .card-organic::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(to bottom right, hsl(var(--primary) / 0.08), transparent, hsl(var(--secondary) / 0.08));
+  }
+
+  .card-organic:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Vibrant badges inspired by Peruvian textiles */
+  .badge-primary {
+    @apply bg-gradient-to-r from-primary to-primary-hover text-primary-foreground border-0
+           px-4 py-2 rounded-full text-sm font-semibold shadow-sm;
+  }
+  
+  .badge-secondary {
+    @apply bg-gradient-to-r from-secondary to-secondary-hover text-secondary-foreground border-0
+           px-4 py-2 rounded-full text-sm font-semibold shadow-sm;
+  }
+
+  .badge-accent {
+    @apply bg-gradient-to-r from-accent to-accent-hover text-accent-foreground border-0
+           px-4 py-2 rounded-full text-sm font-semibold shadow-sm;
+  }
+
+  .badge-emerald {
+    @apply bg-gradient-to-r from-emerald to-emerald text-emerald-foreground border-0
+           px-4 py-2 rounded-full text-sm font-semibold shadow-sm;
+  }
+
+  .badge-purple {
+    @apply bg-gradient-to-r from-purple to-purple text-purple-foreground border-0
+           px-4 py-2 rounded-full text-sm font-semibold shadow-sm;
+  }
+
+  /* Status badges with vibrant theme */
+  .badge-urgent {
+    @apply bg-gradient-to-r from-destructive to-destructive text-destructive-foreground border-0
+           px-4 py-2 rounded-full text-sm font-semibold shadow-sm animate-pulse;
+  }
+
+  /* Modern Typography */
+  .text-hero {
+    @apply font-bold text-4xl md:text-6xl lg:text-7xl leading-tight bg-gradient-to-r from-primary via-purple to-secondary bg-clip-text text-transparent;
+  }
+  
+  .text-heading {
+    @apply font-bold text-2xl md:text-4xl leading-tight text-foreground;
+  }
+  
+  .text-subheading {
+    @apply font-semibold text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .text-highlight {
+    @apply font-semibold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Organic shapes and patterns */
+  .organic-shape {
+    @apply rounded-[60%_40%_30%_70%/50%_30%_70%_50%];
+  }
+  
+  .leaf-shape {
+    @apply rounded-[50%_20%_50%_20%];
+  }
+
+  /* Rural texture overlays */
+  .texture-paper {
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(35 33% 98% / 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(30 20% 96% / 0.3) 0%, transparent 50%);
+  }
+  
+  .texture-earth {
+    background-image: 
+      linear-gradient(45deg, hsl(25 15% 25% / 0.02) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(25 15% 25% / 0.02) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(25 15% 25% / 0.02) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(25 15% 25% / 0.02) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+}
+
+@layer utilities {
+  /* Natural shadows */
+  .shadow-organic {
+    box-shadow: 0 4px 20px hsl(25 15% 25% / 0.08);
+  }
+  
+  .shadow-leaf {
+    box-shadow: 0 8px 32px hsl(142 40% 35% / 0.15);
+  }
+
+  /* Rural animation system */
+  @keyframes leafFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+
+  @keyframes gentleWave {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(5px); }
+  }
+
+  @keyframes harvestGlow {
+    0%, 100% { opacity: 0.8; box-shadow: 0 0 15px hsl(45 85% 55% / 0.3); }
+    50% { opacity: 1; box-shadow: 0 0 25px hsl(45 85% 55% / 0.5); }
+  }
+
+  @keyframes soilSettle {
+    0% { transform: translateY(-5px) scale(0.98); opacity: 0.7; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  @keyframes windRustle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    75% { transform: rotate(-1deg); }
+  }
+
+  /* Animation classes */
+  .animate-leaf-float {
+    animation: leafFloat 4s ease-in-out infinite;
+  }
+
+  .animate-gentle-wave {
+    animation: gentleWave 3s ease-in-out infinite;
+  }
+
+  .animate-harvest-glow {
+    animation: harvestGlow 2.5s ease-in-out infinite;
+  }
+
+  .animate-soil-settle {
+    animation: soilSettle 0.6s ease-out;
+  }
+
+  .animate-wind-rustle {
+    animation: windRustle 2s ease-in-out infinite;
+  }
+
+  /* Organic transitions */
+  .transition-organic {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Rural hover effects */
+  .hover-grow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-grow:hover {
+    transform: scale(1.02);
+  }
+
+  .hover-leaf {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-leaf:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px hsl(142 40% 35% / 0.15);
+  }
+
+  /* Text with rural character */
+  .text-harvest {
+    @apply bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .text-earth {
+    @apply bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent;
+  }
+
+  /* Rural spacing utilities */
+  .space-rural > * + * {
+    margin-top: 1.5rem;
+  }
+
+  /* Handcrafted borders */
+  .border-rural {
+    @apply border border-border rounded-radius-lg;
+  }
+
+  .border-organic {
+    border: 1px solid hsl(30 15% 85%);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Rural focus states */
+  .focus-rural:focus {
+    @apply outline-none ring-2 ring-primary/50 ring-offset-2;
+  }
+
+  /* Custom scrollbar for rural theme */
+  .scrollbar-rural::-webkit-scrollbar-thumb {
+    @apply bg-secondary/40 rounded-full;
+  }
+
+  .scrollbar-rural::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary/60;
+  }
+
+  /* Loading states with rural character */
+  .loading-rural {
+    @apply animate-pulse bg-gradient-to-r from-muted to-border;
+  }
+
+  /* Success states */
+  .success-rural {
+    @apply bg-success/10 border border-success/20 text-success;
+  }
+
+  /* Warning states */
+  .warning-rural {
+    @apply bg-warning/10 border border-warning/20 text-warning;
+  }
+}

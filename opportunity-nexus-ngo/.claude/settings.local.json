@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(npm install)",
+      "Bash(npx tsc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(node:*)",
+      "Bash(cp:*)",
+      "Bash(ls:*)",
+      "Bash(export npm_config_target_platform=linux)",
+      "Bash(export npm_config_target_arch=x64)",
+      "Bash(npm rebuild:*)",
+      "Bash(yarn add:*)",
+      "Bash(yarn build)",
+      "Bash(yarn dev)"
+    ],
+    "deny": []
+  }
+}
