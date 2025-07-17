@@ -1,0 +1,39 @@
+# Completely disable Jekyll processing
+# This prevents the "Is a directory" error with assets
+
+# Exclude everything except the built app
+exclude:
+  - "*"
+  - "*/**"
+  - "assets"
+  - "docs"
+  - "src"
+  - "node_modules"
+  - "scripts"
+  - "tests"
+  - "grant-aggregator-apify-actors"
+  - "package.json"
+  - "package-lock.json"
+  - "tsconfig.json"
+  - "tailwind.config.ts"
+  - "vite.config.ts"
+  - ".env.example"
+  - ".gitignore"
+  - "README.md"
+  - "SETUP_GUIDE.md"
+  - "PROJECT_SUMMARY.md"
+  - "FIX_JEKYLL_DEPLOYMENT.md"
+  - "airtable-base-schema.json"
+  - "Misión Huascarán-Main-keywords-info.json"
+
+# Disable all Jekyll features
+plugins: []
+markdown: kramdown
+highlighter: rouge
+safe: true
+incremental: false
+strict_front_matter: true
+
+# Prevent any processing
+keep_files: []
+encoding: "utf-8"
