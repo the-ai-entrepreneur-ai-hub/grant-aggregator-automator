@@ -74,10 +74,10 @@ export default function ApplicationTracker({ opportunities = [] }: ApplicationTr
       };
 
       // Direct API call to create application
-      const response = await fetch(`https://api.airtable.com/v0/appR8MwS1pQs7Bnga/Applications`, {
+      const response = await fetch(`https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/Applications`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer patrTARcp2imegWXX.6c00ccdd82f0b1fa64b9a837e3e3218fb87a7f0b29896644c51ea2c24f66b0a3`,
+          'Authorization': `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
