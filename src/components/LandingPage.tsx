@@ -237,32 +237,69 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Success Stories Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold">
-              Ready to Transform Your Community?
-            </h2>
-            <p className="text-xl text-blue-100">
-              Join hundreds of organizations already using our platform to secure funding 
-              and create meaningful change in rural Peru.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Success Stories from Rural Peru
+              </h2>
+              <p className="text-xl text-blue-100">
+                Real impact from communities using our grant management platform
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="bg-white/10 backdrop-blur-md border-white/20">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <Award className="h-8 w-8 text-yellow-400 mr-3" />
+                    <div>
+                      <h3 className="font-semibold text-lg">San Marcos Agricultural Project</h3>
+                      <p className="text-blue-100 text-sm">Ancash Region</p>
+                    </div>
+                  </div>
+                  <p className="text-blue-100 mb-4">
+                    Secured $45,000 in funding for sustainable farming techniques, improving crop yields by 40% 
+                    and benefiting 120 farming families.
+                  </p>
+                  <div className="flex items-center text-sm text-blue-200">
+                    <DollarSign className="h-4 w-4 mr-1" />
+                    <span>$45,000 secured • 120 families impacted</span>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/10 backdrop-blur-md border-white/20">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <Heart className="h-8 w-8 text-red-400 mr-3" />
+                    <div>
+                      <h3 className="font-semibold text-lg">Huascarán Healthcare Initiative</h3>
+                      <p className="text-blue-100 text-sm">Rural Clinic Network</p>
+                    </div>
+                  </div>
+                  <p className="text-blue-100 mb-4">
+                    Obtained $28,000 grant for mobile health services, providing medical care to 
+                    15 remote villages with previously limited access.
+                  </p>
+                  <div className="flex items-center text-sm text-blue-200">
+                    <Users className="h-4 w-4 mr-1" />
+                    <span>$28,000 secured • 15 villages served</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="text-center mt-12">
               <Button 
                 onClick={onGetStarted}
                 size="lg" 
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3"
               >
-                Get Started Today
+                Access Platform
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-white text-white hover:bg-white/10 px-8 py-3"
-              >
-                Contact Us
               </Button>
             </div>
           </div>
