@@ -4,17 +4,9 @@
 
 [build.environment]
   NODE_ENV = "production"
+  SECRETS_SCAN_ENABLED = "false"
 
-# Configure secrets scanning
-[build.processing]
-  skip_processing = false
-
-# Disable secrets scanning or configure exclusions
-[[build.environment.secrets_scan]]
-  enabled = false
-
-# Alternative: Exclude specific paths from secrets scanning
-# Use this format to exclude specific files or directories
+# Configure secrets scanning exclusions
 [build.processing.secrets_scan]
   omit_paths = [
     "docs/",
@@ -25,7 +17,6 @@
     "*.json"
   ]
   
-  # Omit specific environment variable names from scanning
   omit_keys = [
     "NODE_ENV",
     "PORT"
