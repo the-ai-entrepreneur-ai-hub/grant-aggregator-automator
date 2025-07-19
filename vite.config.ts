@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/grant-aggregator-automator/',
+  base: process.env.NODE_ENV === 'production' ? '/' : '/grant-aggregator-automator/',
   server: {
     host: "::",
     port: 8080,
