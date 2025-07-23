@@ -54,9 +54,24 @@ const DebugPanel = () => {
 
   const checkEnvVars = () => {
     addResult('🔧 Checking environment variables...');
-    addResult(`API Key: ${import.meta.env.VITE_AIRTABLE_API_KEY ? 'Set' : 'Missing'}`);
-    addResult(`Base ID: ${import.meta.env.VITE_AIRTABLE_BASE_ID ? 'Set' : 'Missing'}`);
-    addResult(`Environment: ${import.meta.env.MODE}`);
+    addResult(`Environment Mode: ${import.meta.env.MODE}`);
+    addResult(`Is Production: ${import.meta.env.PROD}`);
+    addResult(`Is Development: ${import.meta.env.DEV}`);
+    addResult(`API Key: ${import.meta.env.VITE_AIRTABLE_API_KEY ? '✅ Set' : '❌ Missing'}`);
+    addResult(`Base ID: ${import.meta.env.VITE_AIRTABLE_BASE_ID ? '✅ Set' : '❌ Missing'}`);
+    addResult(`Table Name: ${import.meta.env.VITE_AIRTABLE_TABLE_NAME || 'Using fallback'}`);
+    
+    if (!import.meta.env.VITE_AIRTABLE_API_KEY || !import.meta.env.VITE_AIRTABLE_BASE_ID) {
+      addResult('');
+      addResult('🔧 TO FIX THIS ON NETLIFY:');
+      addResult('1. Go to Netlify Dashboard > Site Settings > Environment Variables');
+      addResult('2. Add: VITE_AIRTABLE_API_KEY = patrTARcp2imegWXX.760ec1e9aac667cdaf735ba6b36bfc3e00270da1d116fcfbd5fbc77b103577e0');
+      addResult('3. Add: VITE_AIRTABLE_BASE_ID = appR8MwS1pQs7Bnga');
+      addResult('4. Add: VITE_AIRTABLE_TABLE_NAME = Funding Opportunities');
+      addResult('5. Redeploy your site');
+    }
+    
+    addResult(`All env vars: ${Object.keys(import.meta.env).join(', ')}`);
   };
 
   const clearResults = () => {

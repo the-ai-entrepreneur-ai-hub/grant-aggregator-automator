@@ -1,22 +1,40 @@
 // Airtable API Configuration and Data Services
 // Misión Huascarán Grant Aggregator System
 
+// Environment variable configuration with fallback for production debugging
 const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY;
 const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
+const AIRTABLE_TABLE_NAME = import.meta.env.VITE_AIRTABLE_TABLE_NAME || 'Funding Opportunities';
 const AIRTABLE_API_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}`;
+
+// Detailed environment variable validation and debugging
+console.log('🔧 Environment Variables Debug:', {
+  mode: import.meta.env.MODE,
+  dev: import.meta.env.DEV,
+  prod: import.meta.env.PROD,
+  allEnvVars: Object.keys(import.meta.env),
+  airtableVars: {
+    VITE_AIRTABLE_API_KEY: import.meta.env.VITE_AIRTABLE_API_KEY ? 'Set' : 'Missing',
+    VITE_AIRTABLE_BASE_ID: import.meta.env.VITE_AIRTABLE_BASE_ID ? 'Set' : 'Missing',
+    VITE_AIRTABLE_TABLE_NAME: import.meta.env.VITE_AIRTABLE_TABLE_NAME ? 'Set' : 'Missing (using fallback)'
+  }
+});
 
 // Validate environment variables
 if (!AIRTABLE_API_KEY) {
-  console.error('❌ VITE_AIRTABLE_API_KEY is missing from environment variables');
+  console.error('❌ CRITICAL: VITE_AIRTABLE_API_KEY is missing from environment variables');
+  console.error('📝 Please set environment variables in Netlify dashboard');
+  console.error('🔗 Instructions: See NETLIFY_ENV_SETUP.md in project root');
 }
 if (!AIRTABLE_BASE_ID) {
-  console.error('❌ VITE_AIRTABLE_BASE_ID is missing from environment variables');
+  console.error('❌ CRITICAL: VITE_AIRTABLE_BASE_ID is missing from environment variables');
 }
 
 console.log('🔧 Airtable configuration:', {
   hasApiKey: !!AIRTABLE_API_KEY,
   hasBaseId: !!AIRTABLE_BASE_ID,
   apiUrl: AIRTABLE_API_URL,
+  tableName: AIRTABLE_TABLE_NAME,
   envMode: import.meta.env.MODE
 });
 
