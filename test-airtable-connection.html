@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airtable Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Airtable Connection Test</h1>
+    
+    <button onclick="testConnection()">Test Airtable Connection</button>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testAddData()">Test Add Data</button>
+    
+    <div id="results"></div>
+
+    <script>
+        const API_KEY = 'patrTARcp2imegWXX.760ec1e9aac667cdaf735ba6b36bfc3e00270da1d116fcfbd5fbc77b103577e0';
+        const BASE_ID = 'appR8MwS1pQs7Bnga';
+        const API_URL = `https://api.airtable.com/v0/${BASE_ID}`;
+        
+        function addResult(message, isSuccess = true) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `result ${isSuccess ? 'success' : 'error'}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+        
+        async function testConnection() {
+            try {
+                addResult('🔄 Testing Airtable connection...');
+                
+                const response = await fetch(`${API_URL}/Funding%20Opportunities?maxRecords=3`, {
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult(`✅ Connection successful! Found ${data.records.length} funding opportunities`);
+                    addResult(`📊 First opportunity: ${data.records[0]?.fields['Opportunity Title'] || 'No title'}`);
+                } else {
+                    addResult(`❌ Connection failed: ${response.status} ${response.statusText}`, false);
+                }
+            } catch (error) {
+                addResult(`❌ Error: ${error.message}`, false);
+            }
+        }
+        
+        async function testLogin() {
+            try {
+                addResult('🔄 Testing user authentication...');
+                
+                const response = await fetch(`${API_URL}/Users?filterByFormula={Email}='admin@misionhuascaran.org'`, {
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.records.length > 0) {
+                        const user = data.records[0];
+                        addResult(`✅ User found: ${user.fields['Full Name']} (${user.fields['Role']})`);
+                        addResult(`🔑 Test login with: admin@misionhuascaran.org / admin123`);
+                    } else {
+                        addResult('❌ No admin user found', false);
+                    }
+                } else {
+                    addResult(`❌ User query failed: ${response.status}`, false);
+                }
+            } catch (error) {
+                addResult(`❌ Error: ${error.message}`, false);
+            }
+        }
+        
+        async function testAddData() {
+            try {
+                addResult('🔄 Testing data creation...');
+                
+                const testData = {
+                    fields: {
+                        'Funder Name': 'TEST - Connection Validator',
+                        'Opportunity Title': 'Test Grant Opportunity',
+                        'Support Type': 'Grant',
+                        'Status': 'Open',
+                        'Currency': 'USD',
+                        'Typical Grant Size': 25000,
+                        'Open Date': '2025-07-23',
+                        'Close Date': '2025-12-31'
+                    }
+                };
+                
+                const response = await fetch(`${API_URL}/Funding%20Opportunities`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult(`✅ Test record created successfully! ID: ${data.id}`);
+                } else {
+                    const errorData = await response.text();
+                    addResult(`❌ Failed to create record: ${response.status} - ${errorData}`, false);
+                }
+            } catch (error) {
+                addResult(`❌ Error: ${error.message}`, false);
+            }
+        }
+        
+        // Auto-run connection test when page loads
+        window.onload = function() {
+            testConnection();
+        };
+    </script>
+</body>
+</html>

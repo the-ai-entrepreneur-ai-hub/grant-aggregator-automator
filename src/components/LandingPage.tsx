@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Users, DollarSign, MapPin, Award, Shield, Target, Heart, Mountain, ChevronRight } from 'lucide-react';
+import { ArrowRight, Users, DollarSign, MapPin, Award, Shield, Target, Heart, Mountain, ChevronRight, Settings } from 'lucide-react';
+import DebugPanel from '@/components/DebugPanel';
 
 interface LandingPageProps {
   onGetStarted: () => void;
 }
 
 export default function LandingPage({ onGetStarted }: LandingPageProps) {
+  const [showDebug, setShowDebug] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -27,9 +30,20 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
                 <p className="text-sm text-gray-600">Grant Management System</p>
               </div>
             </div>
-            <Button onClick={onGetStarted} className="bg-blue-600 hover:bg-blue-700">
-              Access Platform
-            </Button>
+            <div className="flex items-center space-x-2">
+              <Button 
+                onClick={() => setShowDebug(!showDebug)} 
+                variant="outline" 
+                size="sm"
+                className="text-gray-600"
+              >
+                <Settings className="h-4 w-4 mr-1" />
+                Debug
+              </Button>
+              <Button onClick={onGetStarted} className="bg-blue-600 hover:bg-blue-700">
+                Access Platform
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -349,6 +363,23 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
           </div>
         </div>
       </footer>
+      
+      {/* Debug Panel */}
+      {showDebug && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 border-b flex justify-between items-center">
+              <h2 className="text-lg font-semibold">Debug Panel</h2>
+              <Button onClick={() => setShowDebug(false)} variant="outline" size="sm">
+                Close
+              </Button>
+            </div>
+            <div className="p-4">
+              <DebugPanel />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

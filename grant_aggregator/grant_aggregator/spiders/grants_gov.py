@@ -1,4 +1,4 @@
-from grant_aggregator.spiders.base_spider import BaseSpider
+from grant_aggregator.grant_aggregator.spiders.base_spider import BaseSpider
 from bs4 import BeautifulSoup
 
 class GrantsGovSpider(BaseSpider):

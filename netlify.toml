@@ -5,6 +5,9 @@
 [build.environment]
   NODE_ENV = "production"
   SECRETS_SCAN_ENABLED = "false"
+  VITE_AIRTABLE_BASE_ID = "appR8MwS1pQs7Bnga"
+  VITE_AIRTABLE_API_KEY = "patrTARcp2imegWXX.760ec1e9aac667cdaf735ba6b36bfc3e00270da1d116fcfbd5fbc77b103577e0"
+  VITE_AIRTABLE_TABLE_NAME = "Funding Opportunities"
 
 # Configure secrets scanning exclusions
 [build.processing.secrets_scan]

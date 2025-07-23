@@ -75,10 +75,8 @@ export interface Keyword {
 
 // Mock Airtable service for development/testing
 export class AirtableService {
-  private config: AirtableConfig;
-
   constructor() {
-    this.config = getConfig();
+    getConfig();
   }
 
   // Mock data for development
@@ -274,6 +272,11 @@ export class AirtableService {
       const deadline = new Date(opportunity['Deadline']);
       return deadline > today && deadline <= futureDate && opportunity['Status'] === 'Active';
     });
+  }
+
+  // Get all grants (alias for getGrantOpportunities)
+  async getAllGrants(): Promise<GrantOpportunity[]> {
+    return this.getGrantOpportunities();
   }
 }
 

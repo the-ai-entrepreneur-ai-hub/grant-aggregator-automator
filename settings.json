@@ -1,0 +1,98 @@
+{
+    "mcpServers": {
+      "wix-mcp-remote": {
+        "autoApprove": [
+          "ListWixSites",
+          "ReadFullDocsMethodSchema"
+        ],
+        "disabled": true,
+        "timeout": 60,
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@wix/mcp-remote@latest",
+          "https://mcp.wix.com/mcp"
+        ]
+      },
+      "github.com/upstash/context7-mcp": {
+        "autoApprove": [],
+        "disabled": false,
+        "timeout": 60,
+        "type": "stdio",
+        "command": "deno",
+        "args": [
+          "run",
+          "--allow-net",
+          "npm:@upstash/context7-mcp"
+        ]
+      },
+      "github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking": {
+        "autoApprove": [
+          "sequential_thinking"
+        ],
+        "disabled": false,
+        "timeout": 60,
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ]
+      },
+      "github.com/21st-dev/magic-mcp": {
+        "autoApprove": [],
+        "disabled": false,
+        "timeout": 60,
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@smithery/cli@latest",
+          "run",
+          "@21st-dev/magic-mcp",
+          "--config",
+          "\"{\\\"TWENTY_FIRST_API_KEY\\\":\\\"cee535cca014b094239bbd3cd9e0ff1674eb6c33a68468a75d6be9401c87cd0d\\\"}\""
+        ]
+      },
+      "web-eval-agent": {
+        "timeout": 60,
+        "type": "stdio",
+        "command": "C:\\Users\\Administrator\\.local\\bin\\uvx",
+        "args": [
+          "--refresh-package",
+          "webEvalAgent",
+          "--from",
+          "git+https://github.com/Operative-Sh/web-eval-agent.git",
+          "webEvalAgent"
+        ],
+        "env": {
+          "OPERATIVE_API_KEY": "op-8y2-HmzR67MVdV81TyV-16fcR9mwJaQvkbJEWmTNyIA"
+        }
+      },
+      "github.com/executeautomation/mcp-playwright": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@executeautomation/playwright-mcp-server"
+        ],
+        "disabled": false,
+        "autoApprove": [
+          "playwright_close",
+          "playwright_evaluate"
+        ]
+      },
+      "github.com/mendableai/firecrawl-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "firecrawl-mcp"
+        ],
+        "env": {
+          "FIRECRAWL_API_KEY": "fc-4f00e97cff524dceb633a1210fd68c68"
+        },
+        "disabled": false,
+        "autoApprove": []
+      }
+    }
+  }

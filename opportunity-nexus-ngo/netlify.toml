@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  environment = { SECRETS_SCAN_OMIT_KEYS = "AIRTABLE_WEBHOOK_URL,NODE_ENV,PORT,AIRTABLE_API_KEY,AIRTABLE_BASE_ID" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

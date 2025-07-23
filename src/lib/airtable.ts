@@ -5,6 +5,21 @@ const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY;
 const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
 const AIRTABLE_API_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}`;
 
+// Validate environment variables
+if (!AIRTABLE_API_KEY) {
+  console.error('❌ VITE_AIRTABLE_API_KEY is missing from environment variables');
+}
+if (!AIRTABLE_BASE_ID) {
+  console.error('❌ VITE_AIRTABLE_BASE_ID is missing from environment variables');
+}
+
+console.log('🔧 Airtable configuration:', {
+  hasApiKey: !!AIRTABLE_API_KEY,
+  hasBaseId: !!AIRTABLE_BASE_ID,
+  apiUrl: AIRTABLE_API_URL,
+  envMode: import.meta.env.MODE
+});
+
 // Table names
 export const TABLES = {
   FUNDING_OPPORTUNITIES: 'Funding Opportunities',
@@ -127,6 +142,13 @@ export interface User {
 
 // API Helper Functions
 const makeRequest = async (endpoint: string, options: RequestInit = {}) => {
+  console.log('🔄 Making Airtable request:', {
+    url: `${AIRTABLE_API_URL}${endpoint}`,
+    method: options.method || 'GET',
+    hasApiKey: !!AIRTABLE_API_KEY,
+    baseId: AIRTABLE_BASE_ID
+  });
+
   const response = await fetch(`${AIRTABLE_API_URL}${endpoint}`, {
     headers: {
       'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
@@ -136,11 +158,21 @@ const makeRequest = async (endpoint: string, options: RequestInit = {}) => {
     ...options,
   });
 
+  console.log('📡 Airtable response:', {
+    status: response.status,
+    statusText: response.statusText,
+    ok: response.ok
+  });
+
   if (!response.ok) {
-    throw new Error(`Airtable API error: ${response.status} ${response.statusText}`);
+    const errorText = await response.text();
+    console.error('❌ Airtable API error:', errorText);
+    throw new Error(`Airtable API error: ${response.status} ${response.statusText} - ${errorText}`);
   }
 
-  return response.json();
+  const data = await response.json();
+  console.log('✅ Airtable data received:', data);
+  return data;
 };
 
 // Funding Opportunities API
@@ -297,7 +329,18 @@ export const airtableAPI = {
 
   async getUserByEmail(email: string) {
     const formula = `{Email} = '${email}'`;
+    console.log('🔍 Looking up user by email:', email);
     const data = await makeRequest(`/${TABLES.USERS}?filterByFormula=${encodeURIComponent(formula)}`);
+    console.log('👥 Found users:', data.records.length);
+    
+    if (data.records.length > 1) {
+      console.warn('⚠️ Multiple users found with same email, using first active user');
+      // Find the first active user, preferring Admin role
+      const activeUsers = data.records.filter((user: User) => user.fields.Status === 'Active');
+      const adminUser = activeUsers.find((user: User) => user.fields.Role === 'Admin');
+      return (adminUser || activeUsers[0]) as User || null;
+    }
+    
     return data.records[0] as User || null;
   },
 
@@ -318,15 +361,23 @@ export const airtableAPI = {
   },
 
   async authenticateUser(email: string, password: string) {
+    console.log('🔐 Attempting authentication for:', email);
     const user = await this.getUserByEmail(email);
+    console.log('👤 User lookup result:', user ? 'Found' : 'Not found');
+    
     if (!user) {
       throw new Error('User not found');
     }
     
+    console.log('🔑 Checking password for user:', user.fields['Full Name']);
+    
     // In production, use proper password hashing comparison
     if (user.fields['Password Hash'] !== password) {
+      console.error('❌ Password mismatch');
       throw new Error('Invalid password');
     }
+    
+    console.log('✅ Authentication successful');
     
     // Update last login
     await this.updateUser(user.id, {
