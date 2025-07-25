@@ -56,7 +56,14 @@ class PeruGrantKeywordMatcher:
                 "Peruvian highlands", "altiplano peruano",
                 "Remote villages Peru", "aldeas remotas Peru",
                 "Indigenous territories", "territorios indígenas",
-                "Latin America", "América Latina", "South America", "Sudamérica"
+                "Latin America", "América Latina", "South America", "Sudamérica",
+                # Additional international geographic terms for grants.gov
+                "developing countries", "países en desarrollo",
+                "international development", "desarrollo internacional",
+                "overseas programs", "programas internacionales",
+                "foreign assistance", "asistencia exterior",
+                "global development", "desarrollo global",
+                "international cooperation", "cooperación internacional"
             ],
             
             MatchCategory.PROGRAM_AREA: [
@@ -115,7 +122,16 @@ class PeruGrantKeywordMatcher:
                 "health sector grants", "subsidios sector salud",
                 "agricultural development", "desarrollo agrícola",
                 "NGO funding", "financiamiento ONG",
-                "civil society grants", "subsidios sociedad civil"
+                "civil society grants", "subsidios sociedad civil",
+                # Additional funding types from grants.gov
+                "federal grants", "subsidios federales",
+                "USAID funding", "financiamiento USAID",
+                "international grants", "subsidios internacionales",
+                "development assistance", "asistencia para el desarrollo",
+                "foreign aid", "ayuda exterior",
+                "cooperative agreements", "acuerdos de cooperación",
+                "technical assistance", "asistencia técnica",
+                "humanitarian aid", "ayuda humanitaria"
             ],
             
             MatchCategory.PRIORITY: [
@@ -125,7 +141,15 @@ class PeruGrantKeywordMatcher:
                 "organizaciones de base", "local NGOs", "ONG locales",
                 "indigenous-led initiatives", "iniciativas lideradas indígenas",
                 "participatory development", "desarrollo participativo",
-                "bottom-up approach", "enfoque de abajo hacia arriba"
+                "bottom-up approach", "enfoque de abajo hacia arriba",
+                # Additional priority indicators for grants.gov
+                "international eligible", "elegible internacional",
+                "developing countries eligible", "países en desarrollo elegibles",
+                "non-profit organizations", "organizaciones sin fines de lucro",
+                "civil society eligible", "sociedad civil elegible",
+                "small grants program", "programa de pequeños subsidios",
+                "capacity building focus", "enfoque fortalecimiento capacidades",
+                "partnership opportunities", "oportunidades de asociación"
             ],
             
             MatchCategory.EXCLUSION: [
